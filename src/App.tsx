@@ -1,14 +1,16 @@
 import React from 'react';
 import './App.css';
-import {Game, Clock, Count} from './components';
+import {Game, Clock} from './components';
+import Count from './containers/count';
+import store from './redux/store';
+import { Provider } from 'react-redux';
 
 function App() {
   return (
-    <div>
-      {/* <Game></Game> */}
-      {/* <Clock></Clock> */}
+    // Provider ???
+    <Provider store={store}>
       <Count></Count>
-    </div>
+    </Provider>
   );
 }
 

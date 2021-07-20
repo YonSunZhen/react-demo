@@ -1,41 +1,41 @@
 import React from 'react';
-import { 
-  store, createIncrementAction, createDecrementAction, createIncrementAsyncAction
-}  from '../../redux';
 
-class Count extends React.Component {
+class CountUI extends React.Component<any, any> {
 
   selectNumber;
 
   componentDidMount() {
-    store.subscribe(() => {
-      this.setState({});
-    })
+    // store.subscribe(() => {
+    //   this.setState({});
+    // })
   }
 
   increment = () => {
     const num = this.selectNumber.value;
-    store.dispatch(createIncrementAction(num))
+    this.props.increment(num);
+    // store.dispatch(createIncrementAction(num))
   }
   decrement = () => {
     const num = this.selectNumber.value;
-    store.dispatch(createDecrementAction(num))
+    this.props.decrement(num);
+    // store.dispatch(createDecrementAction(num))
   }
   incrementIfOdd = () => {
     const num = this.selectNumber.value;
-    if(store.getState() % 2 !== 0) {
-      store.dispatch(createIncrementAction(num))
+    if(this.props.count % 2 !== 0) {
+      this.props.increment(num);
     }
   }
   incrementAsync = () => {
     const num = this.selectNumber.value;
-    store.dispatch(createIncrementAsyncAction(num, 500))
+    this.props.incrementAsync(num, 500);
+    // store.dispatch(createIncrementAsyncAction(num, 500))
   }
 
   render() {
     return (
       <div>
-        <h1>当前求和为: {store.getState()}</h1>
+        <h1>当前求和为: {this.props.count}</h1>
         <select ref={c => this.selectNumber = c}>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -52,4 +52,4 @@ class Count extends React.Component {
   }
 }
 
-export default Count;
+export default CountUI;
