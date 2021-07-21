@@ -1,3 +1,4 @@
+import { INCREMENT_TYPE, DECREMENT_TYPE } from '../constant';
 
 const defaultState = 0;
 
@@ -5,9 +6,9 @@ const defaultState = 0;
 export default function countReducer(preState = defaultState, action) {
   const { type, data } = action;
   switch (type) {
-    case 'increment':
+    case INCREMENT_TYPE:
       return preState + data * 1;
-    case 'decrement':
+    case DECREMENT_TYPE:
       return preState - data * 1;
     default:
       return preState;
