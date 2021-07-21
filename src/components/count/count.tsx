@@ -1,24 +1,26 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { createIncrementAction, createDecrementAction, createIncrementAsyncAction }  from '../../redux';
 
-class CountUI extends React.Component<any, any> {
+class Count extends React.Component<any, any> {
 
   selectNumber;
 
   componentDidMount() {
+    // #region react-redux中做了subscribe的事
     // store.subscribe(() => {
     //   this.setState({});
     // })
+    // #endregion
   }
 
   increment = () => {
     const num = this.selectNumber.value;
     this.props.increment(num);
-    // store.dispatch(createIncrementAction(num))
   }
   decrement = () => {
     const num = this.selectNumber.value;
     this.props.decrement(num);
-    // store.dispatch(createDecrementAction(num))
   }
   incrementIfOdd = () => {
     const num = this.selectNumber.value;
@@ -29,7 +31,6 @@ class CountUI extends React.Component<any, any> {
   incrementAsync = () => {
     const num = this.selectNumber.value;
     this.props.incrementAsync(num, 500);
-    // store.dispatch(createIncrementAsyncAction(num, 500))
   }
 
   render() {
@@ -52,4 +53,19 @@ class CountUI extends React.Component<any, any> {
   }
 }
 
-export default CountUI;
+// 高阶函数 生成容器组件 将store作为props传递给Count组件
+export default connect(
+  state => ({count: state}),
+  // #region mapDispatchToProps的一般写法
+  // dispatch => ({
+  //   increment: data => dispatch(createIncrementAction(data)),
+  //   decrement: data => dispatch(createDecrementAction(data)),
+  //   incrementAsync: (data, time) => dispatch(createIncrementAsyncAction(data, time))
+  // })
+  // #endregion
+  {
+    increment: createIncrementAction, // react-redux中内部做了dispatch的动作
+    decrement: createDecrementAction,
+    incrementAsync: createIncrementAsyncAction
+  }
+)(Count);
