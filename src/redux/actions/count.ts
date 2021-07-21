@@ -1,4 +1,4 @@
-import { INCREMENT_TYPE, DECREMENT_TYPE } from './constant';
+import { INCREMENT_TYPE, DECREMENT_TYPE } from '../constant';
 
 export const createIncrementAction = data => ({type: INCREMENT_TYPE, data});
 export const createDecrementAction = data => ({type: DECREMENT_TYPE, data});

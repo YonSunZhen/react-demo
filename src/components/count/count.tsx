@@ -36,7 +36,8 @@ class Count extends React.Component<any, any> {
   render() {
     return (
       <div>
-        <h1>当前求和为: {this.props.count}</h1>
+        <h2>我是Count组件</h2>
+        <h4>当前求和为: {this.props.count}, 下方组件总人数为: {this.props.personNum}</h4>
         <select ref={c => this.selectNumber = c}>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -54,8 +55,11 @@ class Count extends React.Component<any, any> {
 }
 
 // 高阶函数 生成容器组件 将store作为props传递给Count组件
-export default connect(
-  state => ({count: state}),
+export default connect<{}, {}, {}, any>(
+  state => ({
+    count: state.countStore,
+    personNum: state.personStore.length
+  }),
   // #region mapDispatchToProps的一般写法
   // dispatch => ({
   //   increment: data => dispatch(createIncrementAction(data)),

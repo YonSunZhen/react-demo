@@ -1,2 +1,2 @@
-export * from './count-action';
+export * from './actions/count';
 export { default as store } from './store';
