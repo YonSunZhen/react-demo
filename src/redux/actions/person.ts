@@ -1,3 +1,3 @@
-import { ADD_PERSON } from '../constant';
+import { ADD_PERSON } from 'src/redux';
 
 export const createAddPersonAction = personObj => ({type: ADD_PERSON, data: personObj});

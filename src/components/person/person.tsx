@@ -1,7 +1,7 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
 import { connect } from 'react-redux';
-import { createAddPersonAction } from '../../redux/actions/person';
+import { createAddPersonAction } from 'src/redux';
 
 class Person extends React.Component<any, any> {
 

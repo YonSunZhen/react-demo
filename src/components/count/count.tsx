@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { createIncrementAction, createDecrementAction, createIncrementAsyncAction }  from '../../redux';
+import { createIncrementAction, createDecrementAction, createIncrementAsyncAction }  from 'src/redux';
 
 class Count extends React.Component<any, any> {
 
